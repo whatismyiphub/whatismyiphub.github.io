@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What&#x27;s My IP — Your Public IP Address, Location &amp; ISP</title>
+<meta name="description" content="Find your public IP address, approximate location and ISP, with free tools and plain-English guides about IP addresses, VPNs, IPv6 and privacy.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Georgia,'Times New Roman',serif;background:#fdfbf7;color:#2b2b2b;line-height:1.75}
+a{color:#8a6d3b;text-decoration:none}
+a:hover{text-decoration:underline}
+header{background:#1f2937;padding:20px;color:#f5f0e6;border-bottom:4px solid #b9975b}
+header .wrap{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.logo{font-size:26px;font-weight:700;color:#f5f0e6;font-family:Georgia,serif}
+.logo span{color:#d4af6a}
+nav a{color:#e8e0cf;margin-left:18px;font-family:Georgia,serif}
+.hero{text-align:center;padding:44px 20px 30px;max-width:900px;margin:0 auto}
+.hero h1{font-size:38px;line-height:1.2}
+.hero p{font-size:18px;color:#5b5b5b;margin-top:12px;font-style:italic}
+.rule{width:80px;height:3px;background:#b9975b;margin:18px auto}
+main{max-width:900px;margin:0 auto;padding:0 20px 44px}
+.card{background:#fff;border:1px solid #e5dcc8;border-radius:6px;padding:26px;margin:20px 0;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.card h2{color:#1f2937;margin-bottom:10px}
+button{background:#1f2937;color:#f5f0e6;border:0;border-radius:4px;padding:12px 28px;font-size:16px;font-family:Georgia,serif;cursor:pointer}
+button:hover{background:#b9975b;color:#1f2937}
+input{padding:10px 12px;border:1px solid #c9bfa5;border-radius:4px;font-size:15px;width:100%;margin:6px 0;font-family:Georgia,serif}
+label{font-weight:700}
+.result{background:#f7f3ea;border:1px solid #e5dcc8;border-radius:4px;padding:18px;margin-top:14px;word-break:break-word}
+.result p{margin:6px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.toolcard{background:#fff;border:1px solid #e5dcc8;border-radius:6px;padding:20px}
+.toolcard h3{color:#8a6d3b}
+.articlecard{background:#fff;border:1px solid #e5dcc8;border-radius:6px;overflow:hidden}
+.articlecard img{width:100%;height:180px;object-fit:cover;display:block}
+.articlecard .body{padding:18px}
+.articlecard h3{font-size:18px}
+.articlecard h3 a{color:#2b2b2b}
+.note{background:#f7f3ea;border-left:4px solid #b9975b;padding:12px 18px;margin:16px 0}
+footer{background:#1f2937;color:#c9c2b2;text-align:center;padding:30px 16px;margin-top:30px}
+footer a{color:#d4af6a}
+article img.heroimg{width:100%;max-height:380px;object-fit:cover;border-radius:6px;margin:18px 0}
+h1{font-size:32px;margin:20px 0 8px;line-height:1.25}
+h2{font-size:24px;margin:24px 0 8px;color:#1f2937}
+h3{font-size:19px;margin:18px 0 6px}
+p{margin:11px 0}
+ul,ol{margin:10px 0 10px 26px}
+.faq{background:#f7f3ea;border:1px solid #e5dcc8;border-radius:6px;padding:20px;margin-top:24px}
+@media(max-width:640px){.hero h1{font-size:28px}h1{font-size:25px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="/index.html">What's <span>My IP</span></a>
+<nav><a href="/index.html">Home</a><a href="/tools/ip-location-lookup.html">Tools</a><a href="/about.html">About</a><a href="/contact.html">Contact</a></nav></div></header>
+<main><div class="hero"><h1>What's My IP Address?</h1><div class="rule"></div>
+<p>Your public address, your approximate location, and your provider — explained in plain English.</p></div>
+<div class="card"><h2>Your IP address</h2>
+<p>This tool fetches your public IP address using the public <strong>ipify</strong> API (api.ipify.org), then looks up its approximate location and provider using the public <strong>ipapi.co</strong> API. The location is approximate — accurate to the city level at best — and nothing about you is stored by this site.</p>
+<button onclick="check()">Show my IP address</button>
+<div class="result" id="ip"><p>Click the button to see your public IP address, location, and ISP.</p></div></div>
+<script>
+function check(){var o=document.getElementById('ip');o.innerHTML='<p>Looking up your address…</p>';
+fetch('https://api.ipify.org?format=json').then(function(r){return r.json();}).then(function(d){
+o.innerHTML='<p><strong>Your public IP address:</strong> '+d.ip+'</p><p>Looking up location…</p>';
+return fetch('https://ipapi.co/'+d.ip+'/json/').then(function(r){return r.json();}).then(function(i){
+if(i.error){o.innerHTML='<p><strong>Your public IP address:</strong> '+d.ip+'</p><p>Location lookup failed: '+i.reason+'</p>';return;}
+o.innerHTML='<p><strong>Your public IP address:</strong> '+d.ip+'</p><p><strong>Approximate location:</strong> '+(i.city||'unknown')+', '+(i.region||'')+' '+(i.country_name||'unknown')+'</p><p><strong>ISP:</strong> '+(i.org||'unknown')+'</p><p><strong>Timezone:</strong> '+(i.timezone||'unknown')+'</p><p><strong>Browser:</strong> '+navigator.userAgent+'</p><p><strong>Screen:</strong> '+screen.width+' × '+screen.height+' pixels</p><p>Location is approximate — IP geolocation is accurate to the city level at best, not your street address.</p>';
+});}).catch(function(){o.innerHTML='<p>The lookup service could not be reached. Please check your connection and try again.</p>';});}
+</script><h2>More tools</h2><div class="grid"><div class="toolcard"><h3>IP Location Lookup</h3><p>Look up the approximate location of any IP address.</p><p><a href="/tools/ip-location-lookup.html">Open the tool →</a></p></div><div class="toolcard"><h3>ISP Info</h3><p>Find out who provides an IP address and which network it belongs to.</p><p><a href="/tools/isp-info.html">Open the tool →</a></p></div><div class="toolcard"><h3>Browser & Device Info</h3><p>See what your browser reveals about your device — entirely locally.</p><p><a href="/tools/browser-device-info.html">Open the tool →</a></p></div><div class="toolcard"><h3>IPv4 vs IPv6 Checker</h3><p>Find out whether you are using IPv4, IPv6, or both.</p><p><a href="/tools/ipv4-vs-ipv6-checker.html">Open the tool →</a></p></div></div>
+<h2 style="margin-top:32px">Guides</h2><div class="grid"><div class="articlecard"><img src="/images/what-is-my-ip-address.jpg" alt="What Is My IP Address? A Plain-English Explanation"><div class="body"><h3><a href="/guides/what-is-my-ip-address.html">What Is My IP Address? A Plain-English Explanation</a></h3><p><a href="/guides/what-is-my-ip-address.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/static-vs-dynamic-ip.jpg" alt="Static vs Dynamic IP: Which Do You Have and Does It Matter?"><div class="body"><h3><a href="/guides/static-vs-dynamic-ip.html">Static vs Dynamic IP: Which Do You Have and Does It Matter?</a></h3><p><a href="/guides/static-vs-dynamic-ip.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/what-is-a-vpn.jpg" alt="What Is a VPN and Should You Use One?"><div class="body"><h3><a href="/guides/what-is-a-vpn.html">What Is a VPN and Should You Use One?</a></h3><p><a href="/guides/what-is-a-vpn.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/ipv6-explained.jpg" alt="IPv6 Explained: Why the Internet Needed a New Address System"><div class="body"><h3><a href="/guides/ipv6-explained.html">IPv6 Explained: Why the Internet Needed a New Address System</a></h3><p><a href="/guides/ipv6-explained.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/how-to-hide-your-ip-address.jpg" alt="How to Hide Your IP Address: The Honest Options"><div class="body"><h3><a href="/guides/how-to-hide-your-ip-address.html">How to Hide Your IP Address: The Honest Options</a></h3><p><a href="/guides/how-to-hide-your-ip-address.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/what-is-an-isp.jpg" alt="What Is an ISP and How Does It Shape Your Internet?"><div class="body"><h3><a href="/guides/what-is-an-isp.html">What Is an ISP and How Does It Shape Your Internet?</a></h3><p><a href="/guides/what-is-an-isp.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/ip-address-location-accuracy.jpg" alt="How Accurate Is IP Location? What Your Address Really Reveals"><div class="body"><h3><a href="/guides/ip-address-location-accuracy.html">How Accurate Is IP Location? What Your Address Really Reveals</a></h3><p><a href="/guides/ip-address-location-accuracy.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/ip-address-blacklist.jpg" alt="Is My IP Address Blacklisted? What It Means and How to Fix It"><div class="body"><h3><a href="/guides/ip-address-blacklist.html">Is My IP Address Blacklisted? What It Means and How to Fix It</a></h3><p><a href="/guides/ip-address-blacklist.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/public-vs-private-ip.jpg" alt="Public vs Private IP Addresses: What Is the Difference?"><div class="body"><h3><a href="/guides/public-vs-private-ip.html">Public vs Private IP Addresses: What Is the Difference?</a></h3><p><a href="/guides/public-vs-private-ip.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/what-is-dns.jpg" alt="What Is DNS? The Internet&#x27;s Phone Book Explained"><div class="body"><h3><a href="/guides/what-is-dns.html">What Is DNS? The Internet's Phone Book Explained</a></h3><p><a href="/guides/what-is-dns.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/ip-address-and-online-tracking.jpg" alt="Your IP Address and Online Tracking: What Advertisers Know"><div class="body"><h3><a href="/guides/ip-address-and-online-tracking.html">Your IP Address and Online Tracking: What Advertisers Know</a></h3><p><a href="/guides/ip-address-and-online-tracking.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/how-to-change-your-ip-address.jpg" alt="How to Change Your IP Address (and When You Should)"><div class="body"><h3><a href="/guides/how-to-change-your-ip-address.html">How to Change Your IP Address (and When You Should)</a></h3><p><a href="/guides/how-to-change-your-ip-address.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/ip-address-and-gaming.jpg" alt="IP Addresses and Gaming: NAT, Lag, and Getting Connected"><div class="body"><h3><a href="/guides/ip-address-and-gaming.html">IP Addresses and Gaming: NAT, Lag, and Getting Connected</a></h3><p><a href="/guides/ip-address-and-gaming.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/ipv4-exhaustion.jpg" alt="IPv4 Exhaustion: How the Internet Ran Out of Addresses"><div class="body"><h3><a href="/guides/ipv4-exhaustion.html">IPv4 Exhaustion: How the Internet Ran Out of Addresses</a></h3><p><a href="/guides/ipv4-exhaustion.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/ip-address-and-email.jpg" alt="IP Addresses and Email: Why Your Messages Sometimes Bounce"><div class="body"><h3><a href="/guides/ip-address-and-email.html">IP Addresses and Email: Why Your Messages Sometimes Bounce</a></h3><p><a href="/guides/ip-address-and-email.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/what-is-a-proxy-server.jpg" alt="What Is a Proxy Server? How It Differs from a VPN"><div class="body"><h3><a href="/guides/what-is-a-proxy-server.html">What Is a Proxy Server? How It Differs from a VPN</a></h3><p><a href="/guides/what-is-a-proxy-server.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/ip-geolocation-for-business.jpg" alt="IP Geolocation for Business: How Companies Use Your Location"><div class="body"><h3><a href="/guides/ip-geolocation-for-business.html">IP Geolocation for Business: How Companies Use Your Location</a></h3><p><a href="/guides/ip-geolocation-for-business.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/how-to-find-someones-ip-address-myths.jpg" alt="Can You Find Someone&#x27;s IP Address? Myths and Realities"><div class="body"><h3><a href="/guides/how-to-find-someones-ip-address-myths.html">Can You Find Someone's IP Address? Myths and Realities</a></h3><p><a href="/guides/how-to-find-someones-ip-address-myths.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/ip-address-and-remote-work.jpg" alt="IP Addresses and Remote Work: What Your Employer Can See"><div class="body"><h3><a href="/guides/ip-address-and-remote-work.html">IP Addresses and Remote Work: What Your Employer Can See</a></h3><p><a href="/guides/ip-address-and-remote-work.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/history-of-ip-addresses.jpg" alt="A Short History of IP Addresses: From ARPANET to Today"><div class="body"><h3><a href="/guides/history-of-ip-addresses.html">A Short History of IP Addresses: From ARPANET to Today</a></h3><p><a href="/guides/history-of-ip-addresses.html">Read the guide →</a></p></div></div></div></main>
+<footer><p>What's My IP — understand your address on the internet.</p>
+<p><a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+<p>© 2026 What's My IP</p></footer>
+</body>
+</html>
