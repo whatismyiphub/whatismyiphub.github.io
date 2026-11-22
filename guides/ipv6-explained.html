@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPv6 Explained: Why the Internet Needed a New Address System | What&#x27;s My IP</title>
+<meta name="description" content="IPv6 Explained: Why the Internet Needed a New Address System">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Georgia,'Times New Roman',serif;background:#fdfbf7;color:#2b2b2b;line-height:1.75}
+a{color:#8a6d3b;text-decoration:none}
+a:hover{text-decoration:underline}
+header{background:#1f2937;padding:20px;color:#f5f0e6;border-bottom:4px solid #b9975b}
+header .wrap{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.logo{font-size:26px;font-weight:700;color:#f5f0e6;font-family:Georgia,serif}
+.logo span{color:#d4af6a}
+nav a{color:#e8e0cf;margin-left:18px;font-family:Georgia,serif}
+.hero{text-align:center;padding:44px 20px 30px;max-width:900px;margin:0 auto}
+.hero h1{font-size:38px;line-height:1.2}
+.hero p{font-size:18px;color:#5b5b5b;margin-top:12px;font-style:italic}
+.rule{width:80px;height:3px;background:#b9975b;margin:18px auto}
+main{max-width:900px;margin:0 auto;padding:0 20px 44px}
+.card{background:#fff;border:1px solid #e5dcc8;border-radius:6px;padding:26px;margin:20px 0;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.card h2{color:#1f2937;margin-bottom:10px}
+button{background:#1f2937;color:#f5f0e6;border:0;border-radius:4px;padding:12px 28px;font-size:16px;font-family:Georgia,serif;cursor:pointer}
+button:hover{background:#b9975b;color:#1f2937}
+input{padding:10px 12px;border:1px solid #c9bfa5;border-radius:4px;font-size:15px;width:100%;margin:6px 0;font-family:Georgia,serif}
+label{font-weight:700}
+.result{background:#f7f3ea;border:1px solid #e5dcc8;border-radius:4px;padding:18px;margin-top:14px;word-break:break-word}
+.result p{margin:6px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.toolcard{background:#fff;border:1px solid #e5dcc8;border-radius:6px;padding:20px}
+.toolcard h3{color:#8a6d3b}
+.articlecard{background:#fff;border:1px solid #e5dcc8;border-radius:6px;overflow:hidden}
+.articlecard img{width:100%;height:180px;object-fit:cover;display:block}
+.articlecard .body{padding:18px}
+.articlecard h3{font-size:18px}
+.articlecard h3 a{color:#2b2b2b}
+.note{background:#f7f3ea;border-left:4px solid #b9975b;padding:12px 18px;margin:16px 0}
+footer{background:#1f2937;color:#c9c2b2;text-align:center;padding:30px 16px;margin-top:30px}
+footer a{color:#d4af6a}
+article img.heroimg{width:100%;max-height:380px;object-fit:cover;border-radius:6px;margin:18px 0}
+h1{font-size:32px;margin:20px 0 8px;line-height:1.25}
+h2{font-size:24px;margin:24px 0 8px;color:#1f2937}
+h3{font-size:19px;margin:18px 0 6px}
+p{margin:11px 0}
+ul,ol{margin:10px 0 10px 26px}
+.faq{background:#f7f3ea;border:1px solid #e5dcc8;border-radius:6px;padding:20px;margin-top:24px}
+@media(max-width:640px){.hero h1{font-size:28px}h1{font-size:25px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="/index.html">What's <span>My IP</span></a>
+<nav><a href="/index.html">Home</a><a href="/tools/ip-location-lookup.html">Tools</a><a href="/about.html">About</a><a href="/contact.html">Contact</a></nav></div></header>
+<main><article>
+<h1>IPv6 Explained: Why the Internet Needed a New Address System</h1>
+<img class="heroimg" src="/images/ipv6-explained.jpg" alt="IPv6 Explained: Why the Internet Needed a New Address System">
+<p>The internet ran out of addresses. That is the simple reason IPv6 exists. The original system, IPv4, uses 32-bit addresses — four numbers, each from 0 to 255 — which allows about 4.3 billion unique addresses. That sounded inexhaustible in 1981, when the internet was a research project with a few hundred computers. By 2011, the last blocks were being handed out, and the world had billions of phones, laptops, and smart devices all needing an address of their own.</p><p>IPv6 solves the shortage by using 128-bit addresses: eight groups of four hexadecimal digits, separated by colons, like 2001:0db8:85a3:0000:0000:8a2e:0370:7334. The number of possible addresses is 340 undecillion — so large that every grain of sand on Earth could have its own address, many times over. The length looks intimidating at first, but most of the time you never type an IPv6 address: your devices and your browser handle it silently, and addresses can be shortened by dropping leading zeroes and compressing runs of them.</p><p>The transition has been slow because IPv4 and IPv6 do not talk to each other directly. A device speaking only IPv4 cannot reach a server speaking only IPv6, and vice versa. So for years the internet has run both systems side by side, in a period called dual-stack: your connection has an IPv4 address and an IPv6 address, and your device picks whichever the destination supports. That is why the move has taken decades rather than happening overnight — everything had to keep working while it changed.</p><p>For ordinary users, IPv6 brings quiet benefits. There is no more need for NAT, the trick that lets many devices share one public IPv4 address: with IPv6, every device can have its own public address, which makes peer-to-peer connections, gaming, and video calls simpler and sometimes faster. IPv6 also has better support for mobile devices moving between networks, and its design includes security features that were bolted on later in IPv4. You will not notice most of this, which is exactly the point — it is infrastructure, not a feature.</p><p>Whether you have IPv6 depends on your provider and your router. Many providers in Europe and Asia now offer it by default, while others still do not. Our IPv4 vs IPv6 checker tool shows which protocol you are using right now, and whether your connection supports both. If you only have IPv4, everything will keep working for the foreseeable future — the internet is not about to switch IPv4 off. But if your provider offers IPv6, turning it on in your router settings is a sensible step towards the future.</p><p>The lesson of IPv6 is a familiar one in technology: a limit that looked impossibly far away arrived sooner than anyone expected, and the fix took years of patient, invisible work. The next time you see a long string of hexadecimal digits in a network setting, you will know what it is — the internet's answer to running out of room, built to last for generations.</p>
+<div class="faq"><h2>Frequently Asked Questions</h2><h3>What is the difference between IPv4 and IPv6?</h3><p>IPv4 uses 32-bit addresses (about 4.3 billion total). IPv6 uses 128-bit addresses (effectively unlimited) and is the long-term replacement.</p><h3>Do I need IPv6?</h3><p>Not urgently. IPv4 still works everywhere. But IPv6 is the future, and enabling it if your provider offers it is a good idea.</p><h3>Why is an IPv6 address so long?</h3><p>It is 128 bits written as eight groups of hexadecimal digits. The length is what gives it an effectively unlimited number of addresses.</p></div>
+<h2>Further reading</h2><ul><li><a href="/guides/what-is-my-ip-address.html">What Is My IP Address? A Plain-English Explanation</a></li><li><a href="/guides/static-vs-dynamic-ip.html">Static vs Dynamic IP: Which Do You Have and Does It Matter?</a></li><li><a href="/guides/what-is-a-vpn.html">What Is a VPN and Should You Use One?</a></li><li><a href="/guides/how-to-hide-your-ip-address.html">How to Hide Your IP Address: The Honest Options</a></li><li><a href="/guides/what-is-an-isp.html">What Is an ISP and How Does It Shape Your Internet?</a></li><li><a href="/guides/ip-address-location-accuracy.html">How Accurate Is IP Location? What Your Address Really Reveals</a></li><li><a href="/guides/ip-address-blacklist.html">Is My IP Address Blacklisted? What It Means and How to Fix It</a></li><li><a href="/guides/public-vs-private-ip.html">Public vs Private IP Addresses: What Is the Difference?</a></li><li><a href="/guides/what-is-dns.html">What Is DNS? The Internet's Phone Book Explained</a></li><li><a href="/guides/ip-address-and-online-tracking.html">Your IP Address and Online Tracking: What Advertisers Know</a></li><li><a href="/guides/how-to-change-your-ip-address.html">How to Change Your IP Address (and When You Should)</a></li><li><a href="/guides/ip-address-and-gaming.html">IP Addresses and Gaming: NAT, Lag, and Getting Connected</a></li><li><a href="/guides/ipv4-exhaustion.html">IPv4 Exhaustion: How the Internet Ran Out of Addresses</a></li><li><a href="/guides/ip-address-and-email.html">IP Addresses and Email: Why Your Messages Sometimes Bounce</a></li><li><a href="/guides/what-is-a-proxy-server.html">What Is a Proxy Server? How It Differs from a VPN</a></li><li><a href="/guides/ip-geolocation-for-business.html">IP Geolocation for Business: How Companies Use Your Location</a></li><li><a href="/guides/how-to-find-someones-ip-address-myths.html">Can You Find Someone's IP Address? Myths and Realities</a></li><li><a href="/guides/ip-address-and-remote-work.html">IP Addresses and Remote Work: What Your Employer Can See</a></li><li><a href="/guides/history-of-ip-addresses.html">A Short History of IP Addresses: From ARPANET to Today</a></li></ul>
+<p><a href="/index.html">← Back to home</a></p></article></main>
+<footer><p>What's My IP — understand your address on the internet.</p>
+<p><a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+<p>© 2026 What's My IP</p></footer>
+</body>
+</html>
